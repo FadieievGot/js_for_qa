@@ -4,7 +4,7 @@
   "description": "demo project for 10-js-ui-wdio",
   "main": "index.js",
   "scripts": {
-    "test": "wdio"
+    "test": "wdio wdio.conf.ts"
   },
   "repository": {
     "type": "git",
