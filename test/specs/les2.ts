@@ -137,11 +137,8 @@ describe("Items search", function() {
         buttonSearchInHeader.click();
         
         expect(browser).toHaveUrlContaining('&search=MacBook');
-
-        const variants = $$('.product-layout'); 
-        variants.forEach(h4 => {
-            expect($$('h4')).toHaveTextContaining('MacBook');
-        }); 
+        
+        expect($$('.product-thumb h4')).toHaveTextContaining('MacBook');
     });
   
     it("should redirect to 'no matching results' in case no items matched", function() {
