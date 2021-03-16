@@ -1,4 +1,4 @@
-describe('Items', function () {
+xdescribe('Items', function () {
 
     beforeEach(function(){
         browser.url('/index.php?route=account/login');
@@ -39,6 +39,6 @@ describe('Items', function () {
         removeButton.click();
         const emptyWishList = $('#content p');
         expect(emptyWishList).toHaveText('Your wish list is empty.');
-        browser.deleteAllCookies();
+        browser.deleteCookies();
     });
  });

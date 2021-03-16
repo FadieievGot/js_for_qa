@@ -1,76 +1,56 @@
-describe('registered user', function () {
+import { App } from "../application/application";
+import { DataProvider } from "../data/test-data-provider";
+
+const dataProvider = new DataProvider();
+
+const products = [
+    {playerName:'iPod Classic'},
+    {playerName:'iPod Nano'},
+    {playerName:'iPod Shuffle'},  
+    {playerName:'iPod Touch'},     
+];
+
+xdescribe('registered user', function () {
     beforeEach(function(){
-        browser.url('/index.php?route=account/login');
-        const content = $('#content');
-        const emailField = content.$('#input-email');
-        const passwordField = content.$('#input-password');
-        const loginButoon = content.$('[value="Login"]');
+        const app = new App()
+        const user = dataProvider.newUser();
 
-        emailField.setValue('testfadCart@gmail.com');
-        passwordField.setValue('1234');
-        loginButoon.click();
-
-        expect(browser).toHaveUrlContaining('/account');
-        expect(content).toHaveTextContaining('My Account');
+        app.registration.open();
+        app.registration.register(user); 
     });
- 
-    let products = [
-        {playerOnStore:'.product-thumb [onclick="cart.add(\'48\', \'1\');"]', playerName:'iPod Classic'},
-        {playerOnStore:'.product-thumb [onclick="cart.add(\'36\', \'1\');"]', playerName:'iPod Nano'},
-        {playerOnStore:'.product-thumb [onclick="cart.add(\'34\', \'1\');"]', playerName:'iPod Shuffle'},  
-        {playerOnStore:'.product-thumb [onclick="cart.add(\'32\', \'1\');"]', playerName:'iPod Touch'},     
-    ]
+
     products.map(data => {
         it(`${data.playerName} can be added to cart by registered user`, function () {
-            browser.url('/mp3-players');
-            const buttonToCart = $(data.playerOnStore);
-            buttonToCart.click();
-            const alertWindow = $('.alert');
-            expect(alertWindow).toHaveTextContaining(`Success: You have added ${data.playerName} to your shopping cart!`);
-            expect($('#cart-total')).toHaveText('1 item(s) - $100.00');
-            browser.url('/index.php?route=checkout/cart');
-            expect($('#cart-total')).toHaveText('1 item(s) - $100.00');
-            expect($$('#content')).not.toHaveText('Your shopping cart is empty!');
-            const comparList = $('#checkout-cart td:nth-child(2) > a');
-            expect(comparList).toHaveText(data.playerName);
-        })
-    });
+            const app = new App()
+            app.home.openAllForCategory('MP3 Players');
 
-    afterEach(function() {
-        const removeButton = $('[data-original-title="Remove"]');
-        removeButton.click();
-        const emptyWishList = $('#content p');
-        expect(emptyWishList).toHaveText('Your shopping cart is empty!');
-        browser.deleteAllCookies();
+            const iPod = app.productCategory.products.find(product => product.title() === data.playerName);
+            expect(iPod).toBeDefined();
+    
+            iPod.addToCart();
+            app.productCategory.topLinks.openShoppingCart();
+
+            expect(app.shoppingCart.isNotEmpty()).toBeTruthy;
+            expect(app.shoppingCart.haveElement(data.playerName)).toBeTruthy;
+        })
     });
  });
 
- describe('by guest', function () {
- 
-    let products = [
-        {playerOnStore:'.product-thumb [onclick="cart.add(\'48\', \'1\');"]', playerName:'iPod Classic'},
-        {playerOnStore:'.product-thumb [onclick="cart.add(\'36\', \'1\');"]', playerName:'iPod Nano'},
-        {playerOnStore:'.product-thumb [onclick="cart.add(\'34\', \'1\');"]', playerName:'iPod Shuffle'},  
-        {playerOnStore:'.product-thumb [onclick="cart.add(\'32\', \'1\');"]', playerName:'iPod Touch'},     
-    ]
+ xdescribe('by guest', function () {
+
     products.map(data => {
-        it(`${data.playerName} can be added to cart by registered user`, function () {
-            browser.url('/mp3-players');
-            const buttonToCart = $(data.playerOnStore);
-            buttonToCart.click();
-            const alertWindow = $('.alert');
-            expect(alertWindow).toHaveTextContaining(`Success: You have added ${data.playerName} to your shopping cart!`);
-            expect($('#cart-total')).toHaveText('1 item(s) - $122.00');
-            browser.url('/index.php?route=checkout/cart');
-            expect($('#cart-total')).toHaveText('1 item(s) - $122.00');
-            expect($$('#content')).not.toHaveText('Your shopping cart is empty!');
-            const comparList = $('#checkout-cart td:nth-child(2) > a');
-            expect(comparList).toHaveText(data.playerName);
+        it(`${data.playerName} can be added to cart by guest user`, function () {
+            const app = new App()
+            app.home.openAllForCategory('MP3 Players');
+
+            const iPod = app.productCategory.products.find(product => product.title() === data.playerName)
+            expect(iPod).toBeDefined()
+    
+            iPod.addToCart();
+            app.productCategory.topLinks.openShoppingCart();
+            
+            expect(app.shoppingCart.isNotEmpty()).toBeTruthy;
+            expect(app.shoppingCart.haveElement(data.playerName)).toBeTruthy;
         })
     });
-
-    afterEach(function() {
-        browser.deleteAllCookies();
-    });
-
  })

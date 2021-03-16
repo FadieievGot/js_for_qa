@@ -195,15 +195,16 @@ exports.config = {
      * Hook that gets executed before the suite starts
      * @param {Object} suite suite details
      */
-    beforeSuite: function (suite) {
-        browser.setWindowSize(1600, 1200);
-        browser.url('');
-    },
+    // beforeSuite: function (suite) {
+    //     browser.setWindowSize(1600, 1200);
+    // },
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
-    // beforeTest: function (test, context) {
-    // },
+    beforeTest: function (test, context) {
+        browser.setWindowSize(1600, 1200);
+        browser.url('');
+    },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)
@@ -220,9 +221,9 @@ exports.config = {
      * Function to be executed after a test (in Mocha/Jasmine).
      */
     afterTest: function(test, context, { error, result, duration, passed, retries }) {
-        if (error) {
-            browser.takeScreenshot();
-          }
+        afterEach(function(){
+            browser.reloadSession();
+        });
     },
 
 
