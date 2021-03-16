@@ -15,7 +15,10 @@ export class ProductCardComponent {
     }
 
     addToWishList() {
-        throw new Error('Not yet implemented');
+        const addToWishList= this.root.$('button[onclick*="wishlist.add"] i.fa-heart');
+        expect(addToWishList).toBeVisible({ message: 'Expected add to cart button to be visible' });
+        addToWishList.click();
+        browser.pause(500);
     }
 
     compareThisProduct() {

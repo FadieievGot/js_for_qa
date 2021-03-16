@@ -5,7 +5,8 @@ import { ProductCategoryPage } from "./pages/productCategory.page";
 import { RegistrationPage } from "../application/pages/registration.page";
 import { ShoppingCartPage } from "../application/pages/shoppingCart.page";
 import { ProductComparisonPage } from "../application/pages/productComparison.page";
-import{ NavigationHelper } from "../application/pages/navigationHelper";
+import { NavigationHelper } from "../application/pages/navigationHelper";
+import { WishListPage } from "../application/pages/wishList.page";
 
 export class App {
     home: HomePage;
@@ -16,6 +17,7 @@ export class App {
     shoppingCart: ShoppingCartPage;
     productComparison: ProductComparisonPage;
     navigationHelper: NavigationHelper;
+    wishList: WishListPage;
 
     constructor() {
         this.home = new HomePage();
@@ -26,5 +28,6 @@ export class App {
         this.shoppingCart = new ShoppingCartPage();
         this.productComparison = new ProductComparisonPage();
         this.navigationHelper = new NavigationHelper();
+        this.wishList = new WishListPage();
     }
 }

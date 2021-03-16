@@ -12,4 +12,11 @@ export class TopLinks {
         this.root.$('a[title="Shopping Cart"]').click()
         browser.pause(1000)
     }
+
+    openWishList() {
+        this.root.$('#wishlist-total').click()
+        browser.pause(1000)
+    }
+
+
 }

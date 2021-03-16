@@ -10,7 +10,7 @@ const products = [
     {playerName:'iPod Touch'},     
 ];
 
-xdescribe('registered user', function () {
+describe('registered user', function () {
     beforeEach(function(){
         const app = new App()
         const user = dataProvider.newUser();
@@ -36,7 +36,7 @@ xdescribe('registered user', function () {
     });
  });
 
- xdescribe('by guest', function () {
+ describe('by guest', function () {
 
     products.map(data => {
         it(`${data.playerName} can be added to cart by guest user`, function () {

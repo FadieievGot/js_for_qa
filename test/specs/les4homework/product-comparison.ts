@@ -31,26 +31,30 @@ describe('registered user', function () {
 
             app.navigationHelper.goToProductComparisonPage();
             
-            const comparList = $('#content a strong');
-            expect($$('#content')).not.toHaveText('You have not chosen any products to compare.');
-            expect(comparList).toHaveText(data.playerName);
+            expect(app.productComparison.isNotEmpty()).toBeTruthy;
+            expect(app.productComparison.haveElement(data.playerName)).toBeTruthy;
+
         })
     });
  });
 
- xdescribe('by guest', function () {
+ describe('by guest', function () {
 
     products.map(data => {
-        it(`${data.playerName} can be selected for comparison by registered guest`, function () {
-            browser.url('/mp3-players');
-            const buttonToComparison = $(data.playerName);
-            buttonToComparison.click();
-            const alertWindow = $('.alert');
-            expect(alertWindow).toHaveTextContaining(`Success: You have added ${data.playerName} to your product comparison!`);
-            browser.url('/index.php?route=product/compare');
-            const comparList = $('#content a strong');
-            expect($$('#content')).not.toHaveText('You have not chosen any products to compare.');
-            expect(comparList).toHaveText(data.playerName);
+        it(`${data.playerName} can be selected for comparison by guest`, function () {
+
+            const app = new App()
+            app.home.openAllForCategory('MP3 Players');
+
+            const iPod = app.productCategory.products.find(product => product.title() === data.playerName);
+            expect(iPod).toBeDefined();
+            
+            iPod.compareThisProduct();
+
+            app.navigationHelper.goToProductComparisonPage();
+            
+            expect(app.productComparison.isNotEmpty()).toBeTruthy;
+            expect(app.productComparison.haveElement(data.playerName)).toBeTruthy;
         })
     });
     

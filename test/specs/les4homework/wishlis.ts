@@ -1,44 +1,37 @@
-xdescribe('Items', function () {
+import { App } from "../application/application";
+import { DataProvider } from "../data/test-data-provider";
 
+const dataProvider = new DataProvider();
+
+const products = [
+    {playerName:'iPod Classic'},
+    {playerName:'iPod Nano'},
+    {playerName:'iPod Shuffle'},  
+    {playerName:'iPod Touch'},     
+];
+
+describe('registered user', function () {
     beforeEach(function(){
-        browser.url('/index.php?route=account/login');
-        const content = $('#content');
-        const emailField = content.$('#input-email');
-        const passwordField = content.$('#input-password');
-        const loginButoon = content.$('[value="Login"]');
+        const app = new App()
+        const user = dataProvider.newUser();
 
-        emailField.setValue('testfadWishList@gmail.com');
-        passwordField.setValue('1234');
-        loginButoon.click();
-
-        expect(browser).toHaveUrlContaining('/account');
-        expect(content).toHaveTextContaining('My Account');
+        app.registration.open();
+        app.registration.register(user); 
     });
 
-    let products = [
-        {playerOnStore:'.product-thumb [onclick="wishlist.add(\'48\');"]', playerName:'iPod Classic'},
-        {playerOnStore:'.product-thumb [onclick="wishlist.add(\'36\');"]', playerName:'iPod Nano'},
-        {playerOnStore:'.product-thumb [onclick="wishlist.add(\'34\');"]', playerName:'iPod Shuffle'},  
-        {playerOnStore:'.product-thumb [onclick="wishlist.add(\'32\');"]', playerName:'iPod Touch'},     
-    ]
     products.map(data => {
         it(`${data.playerName} can be added to wishlist`, function () {
-            browser.url('/mp3-players');
-            const buttonToWishlist = $(data.playerOnStore);
-            buttonToWishlist.click();
-            const alertWindow = $('.alert');
-            expect(alertWindow).toHaveTextContaining(`Success: You have added ${data.playerName} to your wish list!`);
-            browser.url('/index.php?route=account/wishlist');
-            const wishList = $('.table-responsive  .text-left a');
-            expect(wishList).toHaveText(data.playerName);
-        })
-    });
+            
+            const app = new App()
+            app.home.openAllForCategory('MP3 Players');
 
-    afterEach(function() {
-        const removeButton = $('[data-original-title="Remove"]');
-        removeButton.click();
-        const emptyWishList = $('#content p');
-        expect(emptyWishList).toHaveText('Your wish list is empty.');
-        browser.deleteCookies();
+            const iPod = app.productCategory.products.find(product => product.title() === data.playerName);
+            expect(iPod).toBeDefined();
+    
+            iPod.addToWishList();
+            app.productCategory.topLinks.openWishList();
+
+            expect(app.wishList.haveElement(data.playerName)).toBeTruthy;
+        })
     });
  });
