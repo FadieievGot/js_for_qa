@@ -12,7 +12,7 @@ const products = [
 
 describe('registered user', function () {
     beforeEach(function(){
-        const app = new App()
+        const app = new App();
         const user = dataProvider.newUser();
 
         app.registration.open();
@@ -21,7 +21,7 @@ describe('registered user', function () {
 
     products.map(data => {
         it(`${data.playerName} can be selected for comparison by registered user`, function () {
-            const app = new App()
+            const app = new App();
             app.home.openAllForCategory('MP3 Players');
 
             const iPod = app.productCategory.products.find(product => product.title() === data.playerName);
@@ -43,7 +43,7 @@ describe('registered user', function () {
     products.map(data => {
         it(`${data.playerName} can be selected for comparison by guest`, function () {
 
-            const app = new App()
+            const app = new App();
             app.home.openAllForCategory('MP3 Players');
 
             const iPod = app.productCategory.products.find(product => product.title() === data.playerName);
@@ -57,5 +57,4 @@ describe('registered user', function () {
             expect(app.productComparison.haveElement(data.playerName)).toBeTruthy;
         })
     });
-    
  })

@@ -10,7 +10,6 @@ export class PaymentMethodComponent {
     }
 
     continue() {
-        browser.pause(500)
         const continueButton = this.root.$('input[type="button"][value="Continue"]#button-payment-method')
         expect(continueButton).toBeClickable({ message: 'Expected Continue button to be visible' })
         continueButton.click()

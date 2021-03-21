@@ -1,6 +1,8 @@
 export class NavigationHelper {
     goToProductComparisonPage() {
-        browser.url('/index.php?route=product/compare')
-        browser.pause(1000)
+        const comparisonAlertButton = $('.alert [href="http://93.126.97.71:10082/index.php?route=product/compare"]');
+        comparisonAlertButton.click();
+        const content = $('#product-compare');
+        expect(content).toBeVisible();
     }
 }

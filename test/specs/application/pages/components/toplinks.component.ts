@@ -1,21 +1,24 @@
 export class TopLinks {
     private get root(): WebdriverIO.Element {
-        return $('nav#top')
+        return $('nav#top');
     }
 
     openCheckout() {
-        this.root.$('a[title="Checkout"]').click()
-        browser.pause(1000)
+        const checkoutButton = this.root.$('a[title="Checkout"]');
+        expect(checkoutButton).toBeVisible();
+        checkoutButton.click();
     }
 
     openShoppingCart() {
-        this.root.$('a[title="Shopping Cart"]').click()
-        browser.pause(1000)
+        const shoppingCartButton = this.root.$('a[title="Shopping Cart"]');
+        expect(shoppingCartButton).toBeVisible();
+        shoppingCartButton.click();
     }
 
     openWishList() {
-        this.root.$('#wishlist-total').click()
-        browser.pause(1000)
+        const wishListButton = this.root.$('#wishlist-total');
+        expect(wishListButton).toBeVisible();
+        wishListButton.click();
     }
 
 

@@ -6,7 +6,7 @@ export class ProductCategoryPage {
     topLinks: TopLinks = new TopLinks()
 
     open(url: string) {
-        browser.url(url)
+        browser.url(url);
     }
 
     get products(): ProductCardComponent[] {

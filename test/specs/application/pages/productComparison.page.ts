@@ -1,6 +1,6 @@
 export class ProductComparisonPage {
     private get root(): WebdriverIO.Element {
-        return $('#product-compare');
+        return $('#product-compare').parentElement();
     }
 
     isNotEmpty() {
