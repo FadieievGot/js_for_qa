@@ -15,7 +15,7 @@ export class RegistrationPage {
         telephone: string,
         password: string
     }) {
-       
+
         const firstName = this.content.$('#input-firstname');
         expect(firstName).toBeDisplayed({
             wait: 5000,
@@ -33,9 +33,9 @@ export class RegistrationPage {
         const passwordConfirm = this.content.$('#input-confirm');
         passwordConfirm.setValue(data.password);
         const policy = this.content.$('input[type="checkbox"][name="agree"]');
-        policy.click();
+        policy.waitAndClick();
         const continueButton = this.content.$('input[type="submit"][value="Continue"]');
-        continueButton.click();
+        continueButton.waitAndClick();
         const successMessage = this.content.$('h1');
         expect(successMessage).toHaveText('Your Account Has Been Created!', {
             wait: 5000,

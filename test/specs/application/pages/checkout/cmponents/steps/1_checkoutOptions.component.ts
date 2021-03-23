@@ -6,13 +6,13 @@ export class CheckoutOptionsComponent {
     selectGuestCheckout() {
         const guestCheckoutRadio = this.root.$('input[type="radio"][value="guest"]');
         expect(guestCheckoutRadio).toBeClickable({ message: 'Expected Guest Checkout radio button to be visible. Make sure you are not logged in' });
-        guestCheckoutRadio.click();
+        guestCheckoutRadio.waitAndClick();
     }
 
     continue() {
         browser.pause(500);
         const continueButton = this.root.$('input[type="button"][value="Continue"]#button-account');
         expect(continueButton).toBeClickable({ message: 'Expected Continue button to be visible' });
-        continueButton.click();
+        continueButton.waitAndClick();
     }
 }

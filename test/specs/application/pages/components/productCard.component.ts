@@ -10,18 +10,18 @@ export class ProductCardComponent {
     addToCart() {
         const addToCartButton = this.root.$('button[onclick*="cart.add"] i.fa-shopping-cart');
         expect(addToCartButton).toBeVisible({ message: 'Expected add to cart button to be visible' });
-        addToCartButton.click();
+        addToCartButton.waitAndClick();
     }
 
     addToWishList() {
         const addToWishList= this.root.$('button[onclick*="wishlist.add"] i.fa-heart');
         expect(addToWishList).toBeVisible({ message: 'Expected add to wishList button to be visible' });
-        addToWishList.click();
+        addToWishList.waitAndClick();
     }
 
     compareThisProduct() {
         const addToСompareButton = this.root.$('button[onclick*="compare.add"] i.fa-exchange');
         expect(addToСompareButton).toBeVisible({ message: 'Expected add to compare button to be visible' });
-        addToСompareButton.click();
+        addToСompareButton.waitAndClick();
     }
 }

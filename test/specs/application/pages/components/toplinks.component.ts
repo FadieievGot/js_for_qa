@@ -6,19 +6,19 @@ export class TopLinks {
     openCheckout() {
         const checkoutButton = this.root.$('a[title="Checkout"]');
         expect(checkoutButton).toBeVisible();
-        checkoutButton.click();
+        checkoutButton.waitAndClick();
     }
 
     openShoppingCart() {
         const shoppingCartButton = this.root.$('a[title="Shopping Cart"]');
         expect(shoppingCartButton).toBeVisible();
-        shoppingCartButton.click();
+        shoppingCartButton.waitAndClick();
     }
 
     openWishList() {
         const wishListButton = this.root.$('#wishlist-total');
         expect(wishListButton).toBeVisible();
-        wishListButton.click();
+        wishListButton.waitAndClick();
     }
 
 

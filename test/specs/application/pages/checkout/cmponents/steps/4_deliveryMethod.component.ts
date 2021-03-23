@@ -6,7 +6,7 @@ export class DeliveryMethodComponent {
     continue() {
         const continueButton = this.root.$('input[type="button"][value="Continue"]#button-shipping-method');
         expect(continueButton).toBeClickable({ message: 'Expected Continue button to be visible' });
-        continueButton.click();
+        continueButton.waitAndClick();
     }
 
 }

@@ -27,13 +27,13 @@ export class DeliveryDetailsComponent {
     continueNewAddress() {
         const continueButton = this.root.$('input[type="button"][value="Continue"]#button-shipping-address')
         expect(continueButton).toBeClickable({ message: 'Expected Continue button to be visible' })
-        continueButton.click()
+        continueButton.waitAndClick()
     }
 
     selectNewAddress() {
         browser.pause(500)
         const newAddress = this.root.$('input[type="radio"][name="shipping_address"][value="new"]')
-        newAddress.click()
+        newAddress.waitAndClick()
         expect(newAddress).toBeSelected({ message: 'Expected Continue button to be visible' });
     }
 }

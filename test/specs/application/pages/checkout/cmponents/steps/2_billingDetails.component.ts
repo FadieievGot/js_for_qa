@@ -50,12 +50,12 @@ export class BillingDetailsComponent {
     continueGest() {
         const continueButton = this.root.$('input[type="button"][value="Continue"]#button-guest')
         expect(continueButton).toBeClickable({ message: 'Expected Continue button to be visible' })
-        continueButton.click()
+        continueButton.waitAndClick()
     }
 
     continueRegistred() {
         const continueButton = this.root.$('input[type="button"][value="Continue"]#button-payment-address')
         expect(continueButton).toBeClickable({ message: 'Expected Continue button to be visible' })
-        continueButton.click()
+        continueButton.waitAndClick()
     }
 }
