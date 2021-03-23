@@ -202,14 +202,14 @@ exports.config = {
      * Hook that gets executed before the suite starts
      * @param {Object} suite suite details
      */
-    // beforeSuite: function (suite) {
-    //     browser.setWindowSize(1600, 1200);
-    // },
+    beforeSuite: function (suite) {
+        browser.setWindowSize(1600, 1200);
+    },
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
     beforeTest: function (test, context) {
-        browser.setWindowSize(1600, 1200);
+        // browser.setWindowSize(1600, 1200);
         browser.url('');
     },
     /**

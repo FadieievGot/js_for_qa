@@ -20,8 +20,8 @@ export class ProductCardComponent {
     }
 
     compareThisProduct() {
-        const addToСompareButton = this.root.$('button[onclick*="compare.add"] i.fa-exchange');
-        expect(addToСompareButton).toBeVisible({ message: 'Expected add to compare button to be visible' });
-        addToСompareButton.waitAndClick();
+        const addToCompareButton = this.root.$('button[onclick*="compare.add"] i.fa-exchange');
+        expect(addToCompareButton).toBeVisible({ message: 'Expected add to compare button to be visible' });
+        addToCompareButton.waitAndClick();
     }
 }
