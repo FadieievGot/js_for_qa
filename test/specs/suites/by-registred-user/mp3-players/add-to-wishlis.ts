@@ -1,14 +1,9 @@
-import { App } from "../application/application";
-import { DataProvider } from "../data/test-data-provider";
+import { App } from "../../../application/application";
+import { DataProvider } from "../../../data/test-data-provider";
+import constants from "../../../data/constants";
 
 const dataProvider = new DataProvider();
 
-const products = [
-    {playerName:'iPod Classic'},
-    {playerName:'iPod Nano'},
-    {playerName:'iPod Shuffle'},
-    {playerName:'iPod Touch'},
-];
 
 describe('registered user', function () {
     beforeEach(function(){
@@ -19,7 +14,7 @@ describe('registered user', function () {
         app.registration.register(user);
     });
 
-    products.map(data => {
+    constants.mp3Players.map(data => {
         it(`${data.playerName} can be added to wishlist`, function () {
 
             const app = new App()

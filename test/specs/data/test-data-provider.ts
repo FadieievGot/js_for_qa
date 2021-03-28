@@ -5,7 +5,9 @@ export class DataProvider {
             lastName: 'testfad',
             email: `test+${Date.now()}@test.com`,
             telephone: '0734063429',
-            password: '123456789'
+            confirmPasword: '123456789',
+            password: '123456789',
+            acceptTermsAndConditions: true,
         }
 
         return user;

@@ -20,6 +20,7 @@ export class DeliveryDetailsComponent {
         this.root.$('#input-shipping-city').setValue(data.city);
         this.root.$('#input-shipping-postcode').setValue(data.postCode);
         this.root.$('#input-shipping-country').selectByVisibleText(data.country);
+        expect(this.root.$('#input-shipping-zone')).toHaveTextContaining(data.region);
         this.root.$('#input-shipping-zone').selectByVisibleText(data.region);
     }
 

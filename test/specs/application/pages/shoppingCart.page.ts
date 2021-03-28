@@ -12,4 +12,9 @@ export class ShoppingCartPage {
         const shoppingCart = this.root.$(' td:nth-child(2) > a');
         expect(shoppingCart).toHaveText(text);
     }
+
+    haveTwoElements() {
+        const cartTotal = $('#cart-total');
+        expect(cartTotal).toHaveTextContaining('2 item(s)');
+    }
 }

@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/StartITProtractorJS/10-js-ui-wdio-FadieievGot#readme",
   "dependencies": {
-    "@wdio/cli": "^7.0.7"
+    "@wdio/cli": "^7.0.7",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "@wdio/local-runner": "^7.0.7",

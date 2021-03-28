@@ -6,7 +6,7 @@ export class PaymentMethodComponent {
     acceptTermsAndConditions() {
         const checkbox = $('input[type="checkbox"][name="agree"]')
         expect(checkbox).toBeClickable({ message: 'Expected accept terms and conditions checkbox to be visible' })
-        checkbox.click()
+        checkbox.waitAndClick()
     }
 
     continue() {

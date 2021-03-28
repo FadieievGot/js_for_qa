@@ -24,6 +24,7 @@ export class BillingDetailsComponent {
         this.root.$('#input-payment-city').setValue(data.city);
         this.root.$('#input-payment-postcode').setValue(data.postCode);
         this.root.$('#input-payment-country').selectByVisibleText(data.country);
+        browser.pause(300);
         this.root.$('#input-payment-zone').selectByVisibleText(data.region);
     }
 
@@ -44,6 +45,7 @@ export class BillingDetailsComponent {
         this.root.$('#input-payment-city').setValue(data.city);
         this.root.$('#input-payment-postcode').setValue(data.postCode);
         this.root.$('#input-payment-country').selectByVisibleText(data.country);
+        browser.pause(300);
         this.root.$('#input-payment-zone').selectByVisibleText(data.region);
     }
 
