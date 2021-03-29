@@ -1,6 +1,6 @@
-import { App } from "../../../application/application";
-import { DataProvider } from "../../../data/test-data-provider";
-import constants from "../../../data/constants";
+import { App } from "../../../../application/application";
+import { DataProvider } from "../../../../data/test-data-provider";
+import constants from "../../../../data/constants";
 
 const dataProvider = new DataProvider();
 
@@ -26,7 +26,7 @@ describe('registered user', function () {
             iPod.addToWishList();
             app.productCategory.topLinks.openWishList();
 
-            expect(app.wishList.haveElement(data.playerName)).toBeTruthy;
+            app.wishList.haveElement(data.playerName);
         })
     });
  });

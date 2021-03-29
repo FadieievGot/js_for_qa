@@ -1,6 +1,6 @@
-import { App } from "../../../application/application";
-import { DataProvider } from "../../../data/test-data-provider";
-import constants from "../../../data/constants";
+import { App } from "../../../../application/application";
+import { DataProvider } from "../../../../data/test-data-provider";
+import constants from "../../../../data/constants";
 
 const dataProvider = new DataProvider();
 
@@ -19,8 +19,8 @@ describe('by guest', function () {
 
             app.navigationHelper.goToProductComparisonPage();
             
-            expect(app.productComparison.isNotEmpty()).toBeTruthy;
-            expect(app.productComparison.haveElement(data.playerName)).toBeTruthy;
+            app.productComparison.isNotEmpty();
+            app.productComparison.haveElement(data.playerName);
         })
     });
  })

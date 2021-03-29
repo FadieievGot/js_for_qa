@@ -2,12 +2,12 @@ import { ConfirmationPage } from "./pages/checkout/confirmation.page";
 import { CheckoutPage } from "./pages/checkout/index";
 import { HomePage } from "./pages/home/home.page";
 import { ProductCategoryPage } from "./pages/productCategory.page";
-import { RegistrationPage } from "../application/pages/registration.page";
-import { ShoppingCartPage } from "../application/pages/shoppingCart.page";
-import { ProductComparisonPage } from "../application/pages/productComparison.page";
-import { NavigationHelper } from "../application/pages/navigationHelper";
-import { WishListPage } from "../application/pages/wishList.page";
-import {AvailableOptions} from "../application/pages/components/availableOptions.component";
+import { RegistrationPage } from "./pages/registration.page";
+import { ShoppingCartPage } from "./pages/shoppingCart.page";
+import { ProductComparisonPage } from "./pages/productComparison.page";
+import { NavigationHelper } from "./pages/navigationHelper";
+import { WishListPage } from "./pages/wishList.page";
+import {AvailableOptions} from "./pages/components/availableOptions.component";
 
 export class App {
     home: HomePage;

@@ -11,6 +11,8 @@ export class ShoppingCartPage {
     haveElement(text) {
         const shoppingCart = this.root.$(' td:nth-child(2) > a');
         expect(shoppingCart).toHaveText(text);
+
+        return true; 
     }
 
     haveTwoElements() {

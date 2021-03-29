@@ -1,6 +1,6 @@
-import { App } from "../../../application/application";
-import { DataProvider } from "../../../data/test-data-provider";
-import constants from "../../../data/constants";
+import { App } from "../../../../application/application";
+import { DataProvider } from "../../../../data/test-data-provider";
+import constants from "../../../../data/constants";
 
 const dataProvider = new DataProvider();
 
@@ -25,8 +25,8 @@ describe('registered user', function () {
             app.availableOptions.setDeliveryDate('2011-05-19');
             app.availableOptions.addToCart();
             app.productCategory.topLinks.openShoppingCart();
-            expect(app.shoppingCart.isNotEmpty()).toBeTruthy;
-            expect(app.shoppingCart.haveElement(data.playerName)).toBeTruthy;
+            app.shoppingCart.isNotEmpty();
+            app.shoppingCart.haveElement(data.playerName);
         })
     });
 });

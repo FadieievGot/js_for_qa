@@ -1,5 +1,5 @@
-import { App } from "../../../application/application";
-import constants from "../../../data/constants";
+import { App } from "../../../../application/application";
+import constants from "../../../../data/constants";
 
  describe('by guest', function () {
 
@@ -14,8 +14,8 @@ import constants from "../../../data/constants";
             iPod.addToCart();
             app.productCategory.topLinks.openShoppingCart();
 
-            expect(app.shoppingCart.isNotEmpty()).toBeTruthy;
-            expect(app.shoppingCart.haveElement(data.playerName)).toBeTruthy;
+            app.shoppingCart.isNotEmpty();
+            app.shoppingCart.haveElement(data.playerName);
         })
     });
  })
